@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() {
+void main(List<String> args) {
   runApp(const MyApp());
 }
 
@@ -13,49 +13,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('List Tile'),
+          title: const Text('Image'),
         ),
-        body: ListView(
-          children: const [
-            ListTile(
-              contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-              title: Text('Daban'),
-              subtitle: Text(
-                'Message... Message...Message...Message...Message...Message...Message...Message...Message...Message...',
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              leading: CircleAvatar(),
-              trailing: Text('10:00 PM'),
-            ),
-            Divider(
-              color: Colors.grey,
-            ),
-            ListTile(
-              title: Text('Daban'),
-              subtitle: Text(
-                'Message...',
-                maxLines: 2,
-              ),
-              leading: CircleAvatar(),
-              trailing: Text('10:00 PM'),
-            ),
-            Divider(
-              color: Colors.grey,
-            ),
-            ListTile(
-              title: Text('Daban'),
-              subtitle: Text(
-                'Message...',
-                maxLines: 2,
-              ),
-              leading: CircleAvatar(),
-              trailing: Text('10:00 PM'),
-            ),
-            Divider(
-              color: Colors.grey,
-            ),
-          ],
+        body: Center(
+          child: Container(
+            width: 300,
+            height: 500,
+            color: Colors.amber,
+            // ================= Cara 1 ================
+            // child: const Image(
+            //   fit: BoxFit.cover, // cover = seluruh, contain = max h atau w
+            //   // image: AssetImage('images/inazuma.jpg'), // Asset Images
+            //   image: NetworkImage('https://picsum.photos/200/400'), // Network
+            // ),
+            // ================ Cara 2 ==================
+            child: Image.asset('images/inazuma.jpg'),
+          ),
         ),
       ),
     );
