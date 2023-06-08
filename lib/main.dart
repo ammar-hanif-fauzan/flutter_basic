@@ -1,14 +1,11 @@
-// ignore_for_file: must_be_immutable, unnecessary_new
-import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  var faker = new Faker();
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,43 +13,29 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('List Tile'),
+          title: const Text('Dynamic App'),
         ),
-        body: ListView.builder(
-          itemCount: 100,
-          itemBuilder: (context, index) {
-            return ChatItem(
-              imageUrl: 'https://picsum.photos/id/1/200/300',
-              title: faker.person.name(),
-              subTitle: faker.lorem.sentence(),
-            );
-          },
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Text(
+              "1",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: const [
+                // RaisedButton(
+                //   onPressed: () {},
+                //   child: Icon(Icons.remove),
+                // ),
+              ],
+            )
+          ],
         ),
       ),
-    );
-  }
-}
-
-class ChatItem extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String subTitle;
-
-  const ChatItem(
-      {super.key,
-      required this.imageUrl,
-      required this.title,
-      required this.subTitle});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(imageUrl),
-      ),
-      title: Text(title),
-      subtitle: Text(subTitle),
-      trailing: const Text('10:00 PM'),
     );
   }
 }
