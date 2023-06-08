@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_1/main%20text-widget.dart';
+import 'package:flutter_basic/main%20text-widget.dart';
 
 void main() {
   runApp(MyApp());

@@ -5,6 +5,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  MyApp({super.key});
   // ============================ Variable ================================
   // deklarasi variable 1 <Widget> lebih fleksibel untuk widget lebih dari 1
   // daripada spesifik <Container>, karena didalamnya harus widget Container
