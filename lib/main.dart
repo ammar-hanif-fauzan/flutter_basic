@@ -1,7 +1,4 @@
 // ignore_for_file: must_be_immutable
-
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 void main() {
