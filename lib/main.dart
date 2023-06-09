@@ -2,18 +2,36 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  int counter = 1;
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
+  final List<Map<String, dynamic>> myList = [
+    {
+      'Name': 'Daban',
+      'Age': '26',
+      'Color': [
+        'black',
+        'red',
+        'amber',
+        'black',
+        'red',
+        'amber',
+        'black',
+        'red',
+        'amber',
+        'black',
+        'red',
+        'amber'
+      ]
+    },
+    {
+      'Name': 'Frozen',
+      'Age': '25',
+      'Color': ['orange', 'yellow', 'amber']
+    }
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,45 +39,62 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Dynamic App'),
+          title: const Text('Map List'),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              counter.toString(),
-              style: const TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    if (counter > 1) {
-                      setState(() {
-                        counter--;
-                      });
-                    }
-                    print(counter);
-                  },
-                  child: const Icon(Icons.remove),
+        body: ListView(
+          children: myList.map(
+            (data) {
+              List colors = data['Color'];
+              print("------------");
+              return Card(
+                margin: const EdgeInsets.all(20),
+                color: Colors.grey[100],
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const CircleAvatar(),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Name: ${data['Name']}'),
+                              Text('Age: ${data['Age']}'),
+                            ],
+                          ),
+                        ],
+                      ),
+                      // Fav Color
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: colors.map(
+                            (color) {
+                              return Container(
+                                color: Colors.amber,
+                                margin: const EdgeInsets.symmetric(
+                                  vertical: 15,
+                                  horizontal: 8,
+                                ),
+                                padding: const EdgeInsets.all(10),
+                                child: Text(color),
+                              );
+                            },
+                          ).toList(),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    if (counter >= 1) {
-                      setState(() {
-                        counter++;
-                      });
-                    }
-                    print(counter);
-                  },
-                  child: const Icon(Icons.add),
-                ),
-              ],
-            )
-          ],
+              );
+            },
+          ).toList(),
         ),
       ),
     );
