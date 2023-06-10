@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, file_names, avoid_print
 import 'package:flutter/material.dart';
 
 void main() {
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
                 margin: const EdgeInsets.all(20),
                 color: Colors.grey[100],
                 child: Container(
-                  margin: EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

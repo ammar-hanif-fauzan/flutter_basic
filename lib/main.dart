@@ -1,48 +1,85 @@
-// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          leading: Container(
-            color: Colors.amber,
-          ),
-          leadingWidth: 100,
-          title: Container(
-            // width: 10,
-            height: 10,
-            color: Colors.red,
-          ),
-          titleSpacing: 0,
-          centerTitle: false,
-          actions: [
-            Container(
-              width: 50,
-              color: Colors.indigo,
-            )
-          ],
-          flexibleSpace: Container(
-            height: 20,
-            color: Colors.green,
-          ),
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(200),
-            child: Container(
-              width: 10,
-              height: 40,
-              color: Colors.amber,
+      home: DefaultTabController(
+        initialIndex: 2,
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Tab Bar'),
+            centerTitle: true,
+            bottom: const TabBar(
+              labelColor: Colors.red,
+              unselectedLabelColor: Colors.white,
+              labelStyle: TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+              unselectedLabelStyle: TextStyle(
+                fontWeight: FontWeight.w300,
+              ),
+              // indicatorColor: Colors.black,
+              // indicatorPadding: EdgeInsets.all(10),
+              // indicatorWeight: 5,
+              indicator: BoxDecoration(
+                color: Colors.amber,
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.black,
+                    width: 10,
+                  ),
+                ),
+              ),
+              tabs: [
+                Tab(
+                  text: 'Home',
+                  icon: Icon(Icons.home),
+                ),
+                Tab(
+                  icon: Icon(Icons.person_add),
+                ),
+                Tab(
+                  text: 'Setting',
+                ),
+              ],
             ),
+          ),
+          body: const TabBarView(
+            children: [
+              Center(
+                child: Text(
+                  "Tab Home",
+                  style: TextStyle(
+                    fontSize: 40,
+                  ),
+                ),
+              ),
+              Center(
+                child: Text(
+                  "Tab Invite User",
+                  style: TextStyle(
+                    fontSize: 40,
+                  ),
+                ),
+              ),
+              Center(
+                child: Text(
+                  "Tab Setting",
+                  style: TextStyle(
+                    fontSize: 40,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

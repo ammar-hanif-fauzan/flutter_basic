@@ -1,10 +1,14 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,9 +17,9 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('My First Basic Widget Apps'),
+          title: const Text('My First Basic Widget Apps'),
         ),
-        body: Center(
+        body: const Center(
           child: Text('Halo'),
         ),
       ),

@@ -1,18 +1,21 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter_basic/main%20text-widget.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Visible & Invisible'),
+          title: const Text('Visible & Invisible'),
         ),
         // ==================== Column ==================
         // body: Column(
@@ -33,7 +36,7 @@ class MyApp extends StatelessWidget {
         // ),
         // ================== End of Column ==================
 
-        // ==================== Column ==================
+        // ==================== Row ==================
         // body: Row(
         //   mainAxisAlignment: MainAxisAlignment.center, // ke samping
         //   crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +53,7 @@ class MyApp extends StatelessWidget {
         //     ),
         //   ],
         // ),
-        // ================== End of Stack ==================
+        // ================== End of Row ==================
         body: Stack(
           //Tumpukan tidak memiliki main atau cross axis
           children: [

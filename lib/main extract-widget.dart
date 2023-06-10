@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, unnecessary_new
+// ignore_for_file: must_be_immutable, unnecessary_new, file_names
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
