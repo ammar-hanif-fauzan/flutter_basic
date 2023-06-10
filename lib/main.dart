@@ -11,75 +11,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DefaultTabController(
-        initialIndex: 2,
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Tab Bar'),
-            centerTitle: true,
-            bottom: const TabBar(
-              labelColor: Colors.red,
-              unselectedLabelColor: Colors.white,
-              labelStyle: TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-              unselectedLabelStyle: TextStyle(
-                fontWeight: FontWeight.w300,
-              ),
-              // indicatorColor: Colors.black,
-              // indicatorPadding: EdgeInsets.all(10),
-              // indicatorWeight: 5,
-              indicator: BoxDecoration(
-                color: Colors.amber,
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.black,
-                    width: 10,
-                  ),
-                ),
-              ),
-              tabs: [
-                Tab(
-                  text: 'Home',
-                  icon: Icon(Icons.home),
-                ),
-                Tab(
-                  icon: Icon(Icons.person_add),
-                ),
-                Tab(
-                  text: 'Setting',
-                ),
-              ],
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Text Field'),
+        ),
+        body: const Center(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: TextField(
+              autocorrect: true, // membenarkan kata2
+              autofocus: false, // membuat form langsung terpilih
+              enableSuggestions: true, // memberi sugesti kata
+              enableInteractiveSelection: true, // membuat bisa copy paste form
+              enabled: true, // membuat form menjadi disable jika false
+              // obscureText: false, // membuat form menjadi password
+              // obscuringCharacter: '*', // karakter password bisa diganti
+              keyboardType: TextInputType.phone, // input type keyobard number
+              readOnly: true, // membuat menjadi readonly
             ),
-          ),
-          body: const TabBarView(
-            children: [
-              Center(
-                child: Text(
-                  "Tab Home",
-                  style: TextStyle(
-                    fontSize: 40,
-                  ),
-                ),
-              ),
-              Center(
-                child: Text(
-                  "Tab Invite User",
-                  style: TextStyle(
-                    fontSize: 40,
-                  ),
-                ),
-              ),
-              Center(
-                child: Text(
-                  "Tab Setting",
-                  style: TextStyle(
-                    fontSize: 40,
-                  ),
-                ),
-              ),
-            ],
           ),
         ),
       ),
