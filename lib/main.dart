@@ -15,19 +15,58 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Text Field'),
         ),
-        body: const Center(
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: TextField(
-              autocorrect: true, // membenarkan kata2
-              autofocus: false, // membuat form langsung terpilih
-              enableSuggestions: true, // memberi sugesti kata
-              enableInteractiveSelection: true, // membuat bisa copy paste form
-              enabled: true, // membuat form menjadi disable jika false
-              // obscureText: false, // membuat form menjadi password
-              // obscuringCharacter: '*', // karakter password bisa diganti
-              keyboardType: TextInputType.phone, // input type keyobard number
-              readOnly: true, // membuat menjadi readonly
+        body: Container(
+          color: Colors.white,
+          child: const Center(
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: TextField(
+                style: TextStyle(
+                  color: Colors.black,
+                  decorationColor: Colors.amber,
+                ),
+                showCursor: true, // menampilkan cursor pada form input
+                cursorColor: Colors.black,
+                cursorWidth: 10, // lebar cursor
+                cursorHeight: 20, // tinggi cursor
+                // cursorRadius: Radius.circular(10.0), // cursor memiliki radius
+
+                textAlign: TextAlign.start, // text align horizontal
+                textAlignVertical: TextAlignVertical.center, // vertical
+                textCapitalization: TextCapitalization.words, //huruh depan 'Ab'
+
+                decoration: InputDecoration(
+                    icon: Icon(
+                      Icons.flare,
+                      color: Colors.amber,
+                      size: 30,
+                    ),
+                    border: OutlineInputBorder(), // border
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.amber,
+                      ),
+                    ), //ketika border fokus
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.red,
+                      ),
+                    ), //ketika border tidak fokus
+
+                    // prefixIcon: Icon(Icons.person), //icon dalam border depan
+                    suffixIcon: IconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.remove_red_eye),
+                    ), //icon dalam border blakang & fungsi utk password
+
+                    prefixText: '+62 ', // prefix text
+                    labelText: 'ini label', //bisa jadi place holder juga
+                    focusColor: Colors.white,
+                    hintText: '812 xxxxxxxx', // ini place holder
+                    hintStyle: TextStyle(
+                      color: Colors.red, //place holder warna merah
+                    )),
+              ),
             ),
           ),
         ),
