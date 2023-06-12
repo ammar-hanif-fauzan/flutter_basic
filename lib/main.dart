@@ -1,59 +1,51 @@
 // ignore_for_file: avoid_print
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  final TextEditingController myController = TextEditingController();
-
-  String hasil = "Hasil Input";
-
+class MyApp extends StatelessWidget {
+  MyApp({super.key});
+  final List<Container> myList = List.generate(
+    50,
+    (index) {
+      return Container(
+        color: Color.fromARGB(255, Random().nextInt(256), Random().nextInt(256),
+            Random().nextInt(256)),
+      );
+    },
+  );
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Text Field'),
+          title: const Text('Grid View'),
+          backgroundColor: Colors.amber,
         ),
-        body: Container(
-          color: Colors.white,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  TextField(
-                    controller: myController, // auto fill
-                    onChanged: (value) {
-                      print(value);
-                    },
-                    onSubmitted: (value) {
-                      print('submited :$value');
-                      setState(() {
-                        hasil = value;
-                      });
-                    },
-                    onEditingComplete: () {
-                      print('Input Complete');
-                    },
-                  ),
-                  Text(hasil)
-                ],
-              ),
-            ),
-          ),
+        // =================== Cara 1 =====================
+        // body: GridView(
+        //   padding: const EdgeInsets.all(10),
+        //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        //       crossAxisCount: 3,
+        //       crossAxisSpacing: 10,
+        //       mainAxisSpacing: 10,
+        //       childAspectRatio: 1 / 1),
+        //   children: myList,
+        // ),
+        // ==================== Cara 2 ====================
+        body: GridView.count(
+          padding: const EdgeInsets.all(10),
+          crossAxisCount: 3,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          childAspectRatio: 1 / 1,
+          children: myList,
         ),
       ),
     );
